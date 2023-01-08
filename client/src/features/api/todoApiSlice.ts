@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 interface Todo {
 	text: string
-	complete: boolean
+	isComplete: boolean
 }
 
 export const todoApiSlice = createApi({
@@ -33,28 +33,28 @@ export const todoApiSlice = createApi({
 			}),
 			invalidatesTags: ['Todos'],
 		}),
-		// toggleComplete: builder.mutation({
-		// 	query: (id: string) => ({
-		// 		url: `/todos/${id}/complete`,
-		// 		method: 'PATCH',
-		// 	}),
-		// 	invalidatesTags: ['Todos'],
-		// }),
-		// updateTodo: builder.mutation({
-		// 	query: (updatedTodo: {
-		// 		id: string
-		// 		text: string
-		// 		complete: boolean
-		// 	}) => ({
-		// 		url: `/todos/${updatedTodo.id}`,
-		// 		method: 'PATCH',
-		// 		body: JSON.stringify(updatedTodo),
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 		},
-		// 	}),
-		// 	invalidatesTags: ['Todos'],
-		// }),
+		toggleComplete: builder.mutation({
+			query: (id: string) => ({
+				url: `/todos/${id}/complete`,
+				method: 'PATCH',
+			}),
+			invalidatesTags: ['Todos'],
+		}),
+		updateTodo: builder.mutation({
+			query: (updatedTodo: {
+				id: string
+				text: string
+				isComplete: boolean
+			}) => ({
+				url: `/todos/${updatedTodo.id}`,
+				method: 'PATCH',
+				body: JSON.stringify(updatedTodo),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}),
+			invalidatesTags: ['Todos'],
+		}),
 	}),
 })
 
