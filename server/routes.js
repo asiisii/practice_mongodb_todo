@@ -1,8 +1,11 @@
 import express from 'express'
-import getTodos from './routes/getTodosRoute'
-import createTodo from './routes/createTodoRoute'
-import deleteTodo from './routes/deleteTodoRoute'
-import { updateTextTodo, updateIsCompleteTodo } from './routes/updateTodoRoute'
+import getTodos from './routes/getTodosRoute.js'
+import createTodo from './routes/createTodoRoute.js'
+import deleteTodo from './routes/deleteTodoRoute.js'
+import {
+	updateTextTodo,
+	updateIsCompleteTodo,
+} from './routes/updateTodoRoute.js'
 
 const router = express.Router()
 
