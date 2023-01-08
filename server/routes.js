@@ -13,6 +13,6 @@ router.get('/todos', getTodos)
 router.post('/todos', createTodo)
 router.delete('/todos/:id', deleteTodo)
 router.patch('/todos/:id', updateTextTodo)
-router.patch('/todos/:id', updateIsCompleteTodo)
+router.patch('/todos/:id/complete', updateIsCompleteTodo)
 
 export default router
