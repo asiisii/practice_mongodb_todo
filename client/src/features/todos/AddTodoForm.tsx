@@ -1,3 +1,4 @@
+import TodoList from './TodoList'
 import { useGetTodoQuery, useAddTodoMutation } from '../api/todoApiSlice'
 import { useForm } from 'react-hook-form'
 
@@ -6,6 +7,7 @@ type Inputs = {
 }
 
 const AddTodoForm = () => {
+	const { data: todoList, isLoading, isSuccess, isError } = useGetTodoQuery([])
 	const [addTodo] = useAddTodoMutation()
 	const {
 		register,
@@ -19,12 +21,8 @@ const AddTodoForm = () => {
 			text: data.text,
 			isComplete: false,
 		}
-		console.log('====================================')
-		console.log(newData)
-		console.log('====================================')
-		addTodo(newData)
-		console.log(newData)
 
+		addTodo(newData)
 		reset()
 	}
 	return (
@@ -47,6 +45,15 @@ const AddTodoForm = () => {
 					/>
 				</div>
 			</form>
+			{isError ? (
+				<>Oh no, there was an error, check to see if the server is running.</>
+			) : isLoading ? (
+				<>Loading...</>
+			) : isSuccess ? (
+				<TodoList todoList={todoList} />
+			) : (
+				'You have no todo task'
+			)}
 		</div>
 	)
 }
