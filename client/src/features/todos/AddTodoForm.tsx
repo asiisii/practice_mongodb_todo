@@ -6,6 +6,7 @@ type Inputs = {
 }
 
 const AddTodoForm = () => {
+	const [addTodo] = useAddTodoMutation()
 	const {
 		register,
 		handleSubmit,
@@ -18,10 +19,10 @@ const AddTodoForm = () => {
 			text: data.text,
 			isComplete: false,
 		}
-    console.log('====================================');
-    console.log(newData);
-    console.log('====================================');
-		useAddTodoMutation(newData)
+		console.log('====================================')
+		console.log(newData)
+		console.log('====================================')
+		addTodo(newData)
 		console.log(newData)
 
 		reset()
