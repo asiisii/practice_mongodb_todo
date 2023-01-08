@@ -4,4 +4,4 @@
   3. PORT = 5001
 
 - to run the application use
-  `yarn start` or `npm start`
+  `yarn start` or `npm start` after installing all the dependencies
