@@ -5,6 +5,12 @@ interface Todo {
 	isComplete: boolean
 }
 
+type AllTodos = {
+	_id: string
+	text: string
+	isComplete: boolean
+}[]
+
 export const todoApiSlice = createApi({
 	reducerPath: 'api',
 	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5001' }),
@@ -12,7 +18,7 @@ export const todoApiSlice = createApi({
 	endpoints: builder => ({
 		getTodo: builder.query({
 			query: () => '/todos',
-			transformResponse: (todos: Todo[]) => todos.reverse(),
+			transformResponse: (todos: AllTodos) => todos.reverse(),
 			providesTags: ['Todos'],
 		}),
 		addTodo: builder.mutation({
